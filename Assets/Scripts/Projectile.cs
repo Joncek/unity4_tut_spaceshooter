@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
 	
 	public int projectileSpeed = 7;
 	
+	public GameObject explosion;
+	
 	// Use this for initialization
 	void Start () {
 		// cache transform object
@@ -25,7 +27,13 @@ public class Projectile : MonoBehaviour {
 			DestroyObject(gameObject);			
 			return;
 		}
-		
-		
 	}
+	
+	void OnTriggerEnter(Collider other) {
+		Debug.Log("OnTriggerEnter: " + other.gameObject.name);        
+		Instantiate(explosion, myTransform.position, Quaternion.identity);
+		
+		Destroy(gameObject);
+		Destroy(other.gameObject);
+    }
 }

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	private int screenWidth; 
 	private int screenHeight;
 	
-	public int playerSpeed = 5;
+	public int playerSpeed = 10;
 	
 	// Variable to reference prefab. prefab = (reusable) gameobject
 	public GameObject ProjectileFab;
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 		myTransform = transform;
 		
 		// Spawn point
-		myTransform.position = new Vector3(-3, -3, 1);
+		myTransform.position = new Vector3(-3, -3, -1);
 	
 	}
 	
@@ -44,7 +44,6 @@ public class Player : MonoBehaviour {
 		// press space bar to fire a laser
 		if(Input.GetKeyDown(KeyCode.Space)) {
 			Vector3 position = new Vector3(myTransform.position.x, myTransform.position.y +1, myTransform.position.z);		
-			Debug.Log(position);
 			Instantiate(ProjectileFab, position, Quaternion.identity);
 		}
 	}
